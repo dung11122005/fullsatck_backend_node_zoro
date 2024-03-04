@@ -1,17 +1,17 @@
 {
-  "name": "full_backend_zero",
+  "name": "full_backend",
   "version": "1.0.0",
-  "description": "cai dat express",
-  "main": "sever.js",
+  "description": "hoc nodejs",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node sever.js"
+    "start": "node server.js"
   },
   "keywords": [
     "nodejs",
     "react"
   ],
-  "author": "Hoang tan dung",
+  "author": "hoang tan dung",
   "license": "ISC",
   "dependencies": {
     "express": "4.18.2"
