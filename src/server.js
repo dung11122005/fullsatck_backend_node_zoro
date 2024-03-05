@@ -21,7 +21,7 @@ app.get('/', (req, res) => {
     res.render('sample.ejs');
 })
 app.get('/abc', (req, res) => {
-    res.send('<h1>DO THI QUYNH ANH </h1>')
+    res.send('<h1>DO THI QUYNH ANH CUTE GIRL</h1>')
 })
 
 
