@@ -1,7 +1,8 @@
-const express = require('express');//commonjs
-// const { hostname } = require('os');
-const path = require('path');//commonjs
 require('dotenv').config()
+const express = require('express');//commonjs
+const path = require('path');//commonjs
+const configviewengine = require('./config/viewengine');
+const webrouter = require('./routes/web');
 console.log('>>> check env', process.env);
 
 
@@ -10,23 +11,12 @@ const port = process.env.PORT || 8888; // port(8080) => hardcode . uat . pord
 const hostname = process.env.HOST_NAME;// hostname(localhost)
 
 
-//config template engine 
-app.set('views', path.join(__dirname, './views'));
-app.set('view engine', 'ejs')
-
-
-//config static files
-app.use(express.static(path.join(__dirname, 'public')));
+//config template engine ----&&---- config static files
+configviewengine(app);
 
 
 // khai bao route
-app.get('/', (req, res) => {
-    // res.send('Hello World!')
-    res.render('sample.ejs');
-})
-app.get('/abc', (req, res) => {
-    res.send('<h1>DO THI QUYNH ANH CUTE GIRL</h1>')
-})
+app.use('/', webrouter);
 
 
 /////////////////////////////////
