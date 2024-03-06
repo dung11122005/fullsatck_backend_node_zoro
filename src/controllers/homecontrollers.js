@@ -1,4 +1,6 @@
 const gethomepege = (req, res) => {
+    //process data
+    //call model
     res.render('sample.ejs');
 }
 const getabc = (req, res) => {

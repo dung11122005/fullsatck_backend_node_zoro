@@ -8,7 +8,7 @@ const router = express.Router();
 //     res.render('sample.ejs');
 // })
 router.get('/', gethomepege); //                            *(1)
-
-
 router.get('/abc', getabc);
+
+
 module.exports = router;//export default
