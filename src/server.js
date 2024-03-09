@@ -3,8 +3,8 @@ const express = require('express');//commonjs
 const path = require('path');//commonjs
 const configviewengine = require('./config/viewengine');
 const webrouter = require('./routes/web');
-const mysql = require('mysql2'); // Get the client
-console.log('>>> check env', process.env);
+const connection = require('./config/database')
+// console.log('>>> check env', process.env);
 
 
 const app = express()// app express
@@ -20,21 +20,13 @@ configviewengine(app);
 app.use('/', webrouter);
 
 //test connection
-// Create the connection to database
-const connection = mysql.createConnection({
-    host: 'localhost',
-    port: 3307,
-    user: 'root',
-    password: '123456',
-    database: 'hoidanit',
-});
 
 // A simple SELECT query
 connection.query(
     'SELECT * FROM Users u',
     function (err, results, fields) {
         console.log('>>>> results=', results); // results contains rows returned by server
-        console.log('>>>>>>fields=', fields); // fields contains extra meta data about results, if available
+        // console.log('>>>>>>fields=', fields); // fields contains extra meta data about results, if available
     }
 );
 
