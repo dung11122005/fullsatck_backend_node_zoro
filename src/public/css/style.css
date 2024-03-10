@@ -42,7 +42,9 @@
 }
 
 .input-group {
-    padding-top: 10px;
+    margin-top: 10px;
+    margin-left: 10px;
+
 }
 
 #save_id {

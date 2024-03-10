@@ -2,6 +2,10 @@ const connection = require('../config/database')
 const gethomepege = (req, res) => {
     return res.render('home.ejs')
 }
+const postcreateuser = (req, res) => {
+    console.log('>>req.body: ', req.body)
+    res.send('create a new user')
+}
 const getabc = (req, res) => {
     let Users = []
     connection.query(
@@ -17,5 +21,5 @@ const getabc = (req, res) => {
 
 }
 module.exports = {   //   dấu {..} dùng cho nhiều files
-    gethomepege, getabc
+    gethomepege, getabc, postcreateuser
 }
