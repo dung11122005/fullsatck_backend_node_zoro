@@ -1,10 +1,23 @@
+const { request } = require('express')
 const connection = require('../config/database')
 const gethomepege = (req, res) => {
     return res.render('home.ejs')
 }
 const postcreateuser = (req, res) => {
-    console.log('>>req.body: ', req.body)
-    res.send('create a new user')
+    let email = req.body.name_email;
+    let name = req.body.name_ten;
+    let city = req.body.name_city;
+    console.log('email:', email, 'name:', name, 'city:', name);
+
+    connection.query(
+        ` INSERT INTO Users(email, name, city)
+        VALUES(?, ?, ?) `,
+        [email, name, city],
+        function (err, results) {
+            console.log(results);
+            res.send('create user succeed')
+        }
+    );
 }
 const getabc = (req, res) => {
     let Users = []
