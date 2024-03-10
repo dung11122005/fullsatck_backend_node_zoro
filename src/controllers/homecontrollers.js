@@ -1,10 +1,20 @@
+const connection = require('../config/database')
 const gethomepege = (req, res) => {
-    //process data
-    //call model
-    res.render('sample.ejs');
+    return res.render('home.ejs')
 }
 const getabc = (req, res) => {
-    res.send('<h1>DO THI QUYNH ANH CUTE GIRL</h1>');
+    let Users = []
+    connection.query(
+        'SELECT * FROM Users u',
+        function (err, results, fields) {
+            Users = results;
+            console.log('>>>> results=', results); // results contains rows returned by server
+            // console.log('>>>>>>fields=', fields); // fields contains extra meta data about results, if available
+            console.log('>>>> check users=', Users)
+            res.send(JSON.stringify(Users));
+        }
+    );
+
 }
 module.exports = {   //   dấu {..} dùng cho nhiều files
     gethomepege, getabc
