@@ -34,3 +34,17 @@
     background-color: #04AA6D;
     color: white;
 }
+
+.form-add-new {
+    padding: 10px;
+    margin: 0 auto;
+    width: 500px;
+}
+
+.input-group {
+    padding-top: 10px;
+}
+
+#save_id {
+    margin: 10px;
+}
