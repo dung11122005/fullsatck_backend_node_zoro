@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>navbar</title>
+    <title>HOME PAGE</title>
     <link rel="stylesheet" href="./css/style.css">
 
     <style>
@@ -38,44 +38,50 @@
 <body>
     <div class="topnav">
         <a class="active" href="/">Home</a>
-        <a href="/create">News</a>
+        <a href="/create">Create Users</a>
         <!-- <a href="#contact">Contact</a>
         <a href="#about">About</a> -->
     </div>
     <div class="table-container">
-        <div class="title">list user</div>
-        <table>
-            <tr>
-                <th>ID</th>
-                <th>EMAIL</th>
-                <th>NAME</th>
-                <th>CITY</th>
-            </tr>
-            <tr>
-                <td>Peter</td>
-                <td>Griffin</td>
-                <td>$100</td>
-                <td>kon tum</td>
-            </tr>
-            <tr>
-                <td>Lois</td>
-                <td>Griffin</td>
-                <td>$150</td>
-                <td>$150</td>
-            </tr>
-            <tr>
-                <td>Joe</td>
-                <td>Swanson</td>
-                <td>$300</td>
-                <td>$300</td>
-            </tr>
-            <tr>
-                <td>Cleveland</td>
-                <td>Brown</td>
-                <td>$250</td>
-                <td>$250</td>
-            </tr>
-        </table>
+        <%= JSON.stringify(listusers) %>
+            <div class="title">list user</div>
+            <table>
+                <tr>
+                    <th>ID</th>
+                    <th>EMAIL</th>
+                    <th>NAME</th>
+                    <th>CITY</th>
+                    <th>ACTION</th>
+                </tr>
+                <tr>
+                    <td>Peter</td>
+                    <td>Griffin</td>
+                    <td>$100</td>
+                    <td>KON TUM</td>
+                    <td>
+                        <button class="poiter">EDIT</button>
+                        <button class="poiter">DELETE</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Lois</td>
+                    <td>Griffin</td>
+                    <td>$150</td>
+                    <td>TP.HCM</td>
+                </tr>
+                <tr>
+                    <td>Joe</td>
+                    <td>Swanson</td>
+                    <td>$300</td>
+                    <td>HA NOI</td>
+                </tr>
+                <tr>
+                    <td>Cleveland</td>
+                    <td>Brown</td>
+                    <td>$250</td>
+                    <td>HUNG YEN</td>
+                </tr>
+            </table>
     </div>
 </body>
 

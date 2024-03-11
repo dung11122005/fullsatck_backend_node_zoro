@@ -1,7 +1,10 @@
 const { request } = require('express')
 const connection = require('../config/database')
-const gethomepege = (req, res) => {
-    return res.render('home.ejs')
+const { getallusers } = require('../services/CRUDservice');
+const gethomepege = async (req, res) => {
+    // console.log('>>>> check rows', results);
+    let results = await getallusers();
+    return res.render('home.ejs', { listusers: results });
 }
 
 const postcreateuser = async (req, res) => {
