@@ -28,6 +28,9 @@ const postcreateuser = async (req, res) => {
     console.log('>>>check results', results);
     res.send('create new user succeed');
 }
+const getupdatepage = (req, res) => {
+    res.render('edit.ejs')
+}
 
 const getcreatepage = (req, res) => {
     res.render('create.ejs')
@@ -48,5 +51,5 @@ const getabc = (req, res) => {
     );
 }
 module.exports = {   //   dấu {..} dùng cho nhiều files
-    gethomepege, getabc, getcreatepage, postcreateuser
+    gethomepege, getabc, getcreatepage, postcreateuser, getupdatepage
 }

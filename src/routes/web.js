@@ -1,5 +1,5 @@
 const express = require('express');
-const { gethomepege, getabc, getcreatepage, postcreateuser } = require('../controllers/homecontrollers');
+const { gethomepege, getabc, getcreatepage, postcreateuser, getupdatepage } = require('../controllers/homecontrollers');
 const router = express.Router();
 // router.Method('/route', handler);
 
@@ -9,7 +9,8 @@ const router = express.Router();
 // })
 router.get('/', gethomepege); //                            *(1)
 router.get('/abc', getabc);
-router.get('/create', getcreatepage)
+router.get('/create', getcreatepage);
 router.post('/create-user', postcreateuser);
+router.get('/update', getupdatepage);
 
 module.exports = router;//export default
