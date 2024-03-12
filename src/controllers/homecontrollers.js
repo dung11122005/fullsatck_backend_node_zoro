@@ -1,6 +1,6 @@
-const { request } = require('express')
+const { request, response } = require('express')
 const connection = require('../config/database')
-const { getallusers } = require('../services/CRUDservice');
+const { getallusers, getuserbyid, updateuserbyid } = require('../services/CRUDservice');
 const gethomepege = async (req, res) => {
     // console.log('>>>> check rows', results);
     let results = await getallusers();
@@ -12,7 +12,6 @@ const postcreateuser = async (req, res) => {
     let name = req.body.name_ten;
     let city = req.body.name_city;
     console.log('email:', email, 'name:', name, 'city:', name);
-
     // connection.query(
     //     ` INSERT INTO Users(email, name, city)
     //     VALUES(?, ?, ?) `,
@@ -25,15 +24,28 @@ const postcreateuser = async (req, res) => {
     let [results, fields] = await connection.query(
         ` INSERT INTO Users(email, name, city)  VALUES(?, ?, ?) `, [email, name, city]
     );
-    console.log('>>>check results', results);
-    res.send('create new user succeed');
-}
-const getupdatepage = (req, res) => {
-    res.render('edit.ejs')
+    // console.log('>>>check results', results);
+    res.dedirect('/');
 }
 
+const getupdatepage = async (req, res) => {
+    const userid = req.params.id;
+    let user = await getuserbyid(userid)
+    res.render('edit.ejs', { useredit: user });
+}
+
+
+const postupdateuser = async (req, res) => {
+    let email = req.body.name_email;
+    let name = req.body.name_ten;
+    let city = req.body.name_city;
+    let userid = req.body.name_id;
+    // console.log('email:', email, 'name:', name, 'city:', name, 'userid', userid);
+    await updateuserbyid(email, name, city, userid);
+    res.redirect('/');
+}
 const getcreatepage = (req, res) => {
-    res.render('create.ejs')
+    res.render('create.ejs');
 }
 
 
@@ -50,6 +62,7 @@ const getabc = (req, res) => {
         }
     );
 }
+
 module.exports = {   //   dấu {..} dùng cho nhiều files
-    gethomepege, getabc, getcreatepage, postcreateuser, getupdatepage
+    gethomepege, getabc, getcreatepage, postcreateuser, getupdatepage, postupdateuser
 }

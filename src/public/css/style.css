@@ -47,11 +47,15 @@
 
 }
 
-#save_id {
+.save_id {
     margin: 10px;
     cursor: pointer;
 }
 
 .poiter {
     cursor: pointer;
+}
+
+.d-node {
+    display: none;
 }

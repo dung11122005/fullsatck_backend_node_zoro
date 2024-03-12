@@ -5,34 +5,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Update A user</title>
-    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 
 <body>
     <div class="topnav">
         <a href="/">Home</a>
-        <a class="active" href="#news">Create Users</a>
+        <a href="/create">Create Users</a>
         <!-- <a href="#contact">Contact</a>
         <a href="#about">About</a> -->
     </div>
     <div class="form-add-new">
-        <form action="/create-user" method="post">
+        <form action="/update-user" method="post">
             <fieldset>
                 <legend>update a user</legend>
+                <div class="input-group d-node">
+                    <label for="">ID: </label>
+                    <input type="text" name="name_id" value="<%= useredit.id %>">
+                </div>
                 <div class="input-group">
                     <label for="">EMAIL: </label>
-                    <input type="email" name="name_email">
-                </div class="input-group">
+                    <input type="email" name="name_email" value="<%= useredit.email %>">
+                </div>
                 <div class="input-group">
                     <label for="">NAME: </label>
-                    <input type="text" name="name_ten">
+                    <input type="text" name="name_ten" value="<%= useredit.name %>">
                 </div>
                 <div class="input-group">
                     <label for="">CITY: </label>
-                    <input type="text" name="name_city">
+                    <input type="text" name="name_city" value="<%= useredit.city %>">
                 </div>
                 <div>
-                    <button id="save_id">
+                    <button class="save_id">
                         SAVE
                     </button>
                 </div>

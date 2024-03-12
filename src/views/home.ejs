@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HOME PAGE</title>
-    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="../css/style.css">
 
     <style>
         table {
@@ -88,7 +88,7 @@
                         <%= user.city %>
                     </td>
                     <td>
-                        <a href="/update">EDIT</a>
+                        <a href="/update/<%= user.id %>">EDIT</a>
                         <button class="poiter">DELETE</button>
                     </td>
                 </tr>
