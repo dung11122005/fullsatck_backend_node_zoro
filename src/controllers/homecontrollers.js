@@ -1,6 +1,6 @@
 const { request, response } = require('express')
 const connection = require('../config/database')
-const { getallusers, getuserbyid, updateuserbyid } = require('../services/CRUDservice');
+const { getallusers, getuserbyid, updateuserbyid, deleteuserbyid } = require('../services/CRUDservice');
 const gethomepege = async (req, res) => {
     // console.log('>>>> check rows', results);
     let results = await getallusers();
@@ -25,7 +25,7 @@ const postcreateuser = async (req, res) => {
         ` INSERT INTO Users(email, name, city)  VALUES(?, ?, ?) `, [email, name, city]
     );
     // console.log('>>>check results', results);
-    res.dedirect('/');
+    res.redirect('/');
 }
 
 const getupdatepage = async (req, res) => {
@@ -44,6 +44,20 @@ const postupdateuser = async (req, res) => {
     await updateuserbyid(email, name, city, userid);
     res.redirect('/');
 }
+
+const postdeleteuser = async (req, res) => {
+    const userid = req.params.id;
+    let user = await getuserbyid(userid)
+    res.render('delete.ejs', { useredit: user });
+}
+
+const posthandleremoveuser = async (req, res) => {
+    let id = req.body.name_id;
+    await deleteuserbyid(id);
+    res.redirect('/')
+}
+
+
 const getcreatepage = (req, res) => {
     res.render('create.ejs');
 }
@@ -64,5 +78,5 @@ const getabc = (req, res) => {
 }
 
 module.exports = {   //   dấu {..} dùng cho nhiều files
-    gethomepege, getabc, getcreatepage, postcreateuser, getupdatepage, postupdateuser
+    gethomepege, getabc, getcreatepage, postcreateuser, getupdatepage, postupdateuser, postdeleteuser, posthandleremoveuser
 }
