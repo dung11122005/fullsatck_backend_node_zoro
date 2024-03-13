@@ -1,5 +1,7 @@
 const express = require('express');
-const { gethomepege, getabc, getcreatepage, postcreateuser, getupdatepage, postupdateuser, postdeleteuser, posthandleremoveuser } = require('../controllers/homecontrollers');
+const { gethomepege, getabc, getcreatepage, postcreateuser,
+    getupdatepage, postupdateuser, postdeleteuser,
+    posthandleremoveuser } = require('../controllers/homecontrollers');
 const router = express.Router();
 // router.Method('/route', handler);
 
