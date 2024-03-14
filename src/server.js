@@ -24,16 +24,16 @@ app.use('/', webrouter);
 
 //test connection
 
-// A simple SELECT query
-// connection.query(
-//     'SELECT * FROM Users u',
-//     function (err, results, fields) {
-//         console.log('>>>> results=', results); // results contains rows returned by server
-//         // console.log('>>>>>>fields=', fields); // fields contains extra meta data about results, if available
-//     }
-// );
+(async () => {
+    try {
+        await connection();
+        app.listen(port, hostname, () => {
+            console.log(`Example app listening on port ${port}`)
+        })
+    } catch (error) {
+        console.log(">>>> error connection to DB", error);
+    }
+})();
+
 
 /////////////////////////////////
-app.listen(port, hostname, () => {
-    console.log(`Example app listening on port ${port}`)
-})
