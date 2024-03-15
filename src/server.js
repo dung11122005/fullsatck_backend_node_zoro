@@ -4,7 +4,7 @@ const path = require('path');//commonjs
 const configviewengine = require('./config/viewengine');
 const webrouter = require('./routes/web');
 const connection = require('./config/database')
-const Kitten = require('./models/kittan');
+// const Kitten = require('./models/kittan');
 // console.log('>>> check env', process.env);
 
 
@@ -23,8 +23,8 @@ configviewengine(app);
 // khai bao route
 app.use('/', webrouter);
 
-const cat = new Kitten({ name: 'hoi dan it cat' });
-cat.save();
+// const cat = new Kitten({ name: 'hoi dan it cat' });
+// cat.save();
 
 //test connection
 (async () => {

@@ -1,9 +1,14 @@
 const { request, response } = require('express')
 const connection = require('../config/database')
 const { getallusers, getuserbyid, updateuserbyid, deleteuserbyid } = require('../services/CRUDservice');
+const { default: mongoose } = require('mongoose');
+
+
+const User = require('../models/user');
+
 const gethomepege = async (req, res) => {
     // console.log('>>>> check rows', results);
-    let results = await getallusers();
+    let results = [];//await getallusers();
     return res.render('home.ejs', { listusers: results });
 }
 
@@ -21,10 +26,17 @@ const postcreateuser = async (req, res) => {
     //         res.send('create user succeed')
     //     }
     // );
-    let [results, fields] = await connection.query(
-        ` INSERT INTO Users(email, name, city)  VALUES(?, ?, ?) `, [email, name, city]
-    );
+    //------------------------------------------
+
+    // let [results, fields] = await connection.query(
+    //     ` INSERT INTO Users(email, name, city)  VALUES(?, ?, ?) `, [email, name, city]
+    // );
     // console.log('>>>check results', results);
+    await User.create({
+        email: email,
+        name: name,
+        city: city,
+    })
     res.redirect('/');
 }
 
