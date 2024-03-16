@@ -3,6 +3,7 @@ const express = require('express');//commonjs
 const path = require('path');//commonjs
 const configviewengine = require('./config/viewengine');
 const webrouter = require('./routes/web');
+const apirouter = require('./routes/api');
 const connection = require('./config/database')
 // const Kitten = require('./models/kittan');
 // console.log('>>> check env', process.env);
@@ -22,6 +23,7 @@ configviewengine(app);
 
 // khai bao route
 app.use('/', webrouter);
+app.use('/v1/api/', apirouter);
 
 // const cat = new Kitten({ name: 'hoi dan it cat' });
 // cat.save();
