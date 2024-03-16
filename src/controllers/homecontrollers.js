@@ -8,7 +8,7 @@ const User = require('../models/user');
 
 const gethomepege = async (req, res) => {
     // console.log('>>>> check rows', results);
-    let results = [];//await getallusers();
+    let results = await User.find({});//await getallusers();
     return res.render('home.ejs', { listusers: results });
 }
 
@@ -42,7 +42,8 @@ const postcreateuser = async (req, res) => {
 
 const getupdatepage = async (req, res) => {
     const userid = req.params.id;
-    let user = await getuserbyid(userid)
+    // let user = await getuserbyid(userid)
+    let user = await User.findById(userid).exec();
     res.render('edit.ejs', { useredit: user });
 }
 
@@ -53,19 +54,24 @@ const postupdateuser = async (req, res) => {
     let city = req.body.name_city;
     let userid = req.body.name_id;
     // console.log('email:', email, 'name:', name, 'city:', name, 'userid', userid);
-    await updateuserbyid(email, name, city, userid);
+    // await updateuserbyid(email, name, city, userid);
+    await User.updateOne({ _id: userid }, { name: name, email: email, city: city });
     res.redirect('/');
 }
 
 const postdeleteuser = async (req, res) => {
     const userid = req.params.id;
-    let user = await getuserbyid(userid)
+    // let user = await getuserbyid(userid)
+    let user = await User.findById(userid).exec();
     res.render('delete.ejs', { useredit: user });
 }
 
 const posthandleremoveuser = async (req, res) => {
     let id = req.body.name_id;
-    await deleteuserbyid(id);
+    // await deleteuserbyid(id);
+    await User.deleteOne({
+        _id: id,
+    });
     res.redirect('/')
 }
 
