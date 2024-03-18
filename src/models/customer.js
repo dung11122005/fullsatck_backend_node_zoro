@@ -10,8 +10,9 @@ const userSchema = new mongoose.Schema({
     email: String,
     image: String,
     description: String,
-{ timestamps: true }
-});
+},
+    { timestamps: true }
+);
 
 const User = mongoose.model('user', userSchema);
 

@@ -4,6 +4,7 @@ const path = require('path');//commonjs
 const configviewengine = require('./config/viewengine');
 const webrouter = require('./routes/web');
 const apirouter = require('./routes/api');
+const fileUpload = require('express-fileupload');
 const connection = require('./config/database')
 // const Kitten = require('./models/kittan');
 // console.log('>>> check env', process.env);
@@ -12,6 +13,10 @@ const connection = require('./config/database')
 const app = express()// app express
 const port = process.env.PORT || 8888; // port(8080) => hardcode . uat . pord
 const hostname = process.env.HOST_NAME;// hostname(localhost)
+
+//config file uploat
+app.use(fileUpload());
+
 
 //config req.body
 app.use(express.json()) // for json
