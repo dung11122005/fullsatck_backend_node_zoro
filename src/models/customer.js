@@ -1,9 +1,9 @@
 const mongoose = require('mongoose');
 //shape data
-const userSchema = new mongoose.Schema({
+const customerSchema = new mongoose.Schema({
     name: {
         type: String,
-        require: true
+        required: true
     },
     address: String,
     phone: String,
@@ -14,6 +14,6 @@ const userSchema = new mongoose.Schema({
     { timestamps: true }
 );
 
-const User = mongoose.model('user', userSchema);
+const Customer = mongoose.model('Customer', customerSchema);
 
-module.exports = User;
+module.exports = Customer;
