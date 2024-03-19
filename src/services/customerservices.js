@@ -17,7 +17,6 @@ const createCustomerService = async (customerData) => {
         return null
     }
 }
-
 const createarraycustomerservice = async (arr) => {
     try {
         let result = await Customer.insertMany(arr);
@@ -27,7 +26,26 @@ const createarraycustomerservice = async (arr) => {
         return null;
     }
 }
+const getALLcustomerservice = async () => {
+    try {
+        let result = await Customer.find({});
+        return result;
+    } catch (error) {
+        console.log("check error: ", error);
+        return null;
+    }
+}
+const putupdatecustomerservice = async (id, name, email, address, phone) => {
+    try {
+        let result = await Customer.updateOne({ _id: id }, { name, email, address, phone });
+        return result;
+    } catch (error) {
+        console.log(">>> check error: ", error);
+        return null
+    }
+}
+
 module.exports = {
     createCustomerService,
-    createarraycustomerservice
+    createarraycustomerservice, getALLcustomerservice, putupdatecustomerservice
 }

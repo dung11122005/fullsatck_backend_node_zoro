@@ -11,7 +11,7 @@ routerAPI.get('/', (req, res) => {
 });
 
 const { postcreatercustomer,
-    postcreaterarraycustomer
+    postcreaterarraycustomer, getALLcustomer, putupdatecustomer
 } = require('../controllers/customercontrollers');
 
 routerAPI.get('/users', getUserAPI);
@@ -26,6 +26,10 @@ routerAPI.post('/files', postUploadMultipleFilesAPI);
 
 routerAPI.post('/customers', postcreatercustomer);
 routerAPI.post('/customers-many', postcreaterarraycustomer);
+routerAPI.get('/customers', getALLcustomer);
+routerAPI.put('/customers', putupdatecustomer);
+
+
 
 
 module.exports = routerAPI;//export default
