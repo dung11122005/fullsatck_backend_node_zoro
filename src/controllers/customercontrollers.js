@@ -2,7 +2,6 @@ const { uploatsinglefile } = require('../services/fileservices');
 const { createCustomerService, createarraycustomerservice, getALLcustomerservice,
     putupdatecustomerservice, deleteacustomerservice, deletearraycustomerservice
 } = require('../services/customerservices');
-// const Customer = require('../models/customer');
 //{key: value}
 module.exports = {
     postcreatercustomer: async (req, res) => {
