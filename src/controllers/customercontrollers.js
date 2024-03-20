@@ -1,7 +1,6 @@
 const { uploatsinglefile } = require('../services/fileservices');
-const { createCustomerService,
-    createarraycustomerservice, getALLcustomerservice,
-    putupdatecustomerservice
+const { createCustomerService, createarraycustomerservice, getALLcustomerservice,
+    putupdatecustomerservice, deleteacustomerservice, deletearraycustomerservice
 } = require('../services/customerservices');
 const Customer = require('../models/customer');
 //{key: value}
@@ -70,6 +69,26 @@ module.exports = {
             {
                 EC: 0,
                 date: result
+            }
+        )
+    },
+    deleteacustomer: async (req, res) => {
+        let id = req.body.id;
+        let result = await deleteacustomerservice(id);
+        return res.status(200).json(
+            {
+                EC: 0,
+                date: result
+            }
+        )
+    },
+    deletearraycustomer: async (req, res) => {
+        let ids = req.body.customersID;
+        let result = await deletearraycustomerservice(ids);
+        return res.status(200).json(
+            {
+                EC: 0,
+                data: result
             }
         )
     }

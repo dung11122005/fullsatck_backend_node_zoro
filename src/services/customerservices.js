@@ -1,4 +1,4 @@
-const Customer = require("../models/customer");
+const Customer = require('../models/customer');
 
 const createCustomerService = async (customerData) => {
     console.log(">>> check customerData: ", customerData)
@@ -44,8 +44,25 @@ const putupdatecustomerservice = async (id, name, email, address, phone) => {
         return null
     }
 }
-
+const deleteacustomerservice = async (id) => {
+    try {
+        let result = await Customer.findByhoidanIT(id)
+        return result;
+    } catch (error) {
+        console.log(">>> check error: ", error);
+        return null
+    }
+}
+const deletearraycustomerservice = async (arrids) => {
+    try {
+        let result = await Customer.delete({ _id: { $in: arrids } });
+        return result;
+    } catch (error) {
+        console.log(">>> check error: ", error);
+        return null;
+    }
+}
 module.exports = {
-    createCustomerService,
-    createarraycustomerservice, getALLcustomerservice, putupdatecustomerservice
+    createCustomerService, createarraycustomerservice, getALLcustomerservice,
+    putupdatecustomerservice, deleteacustomerservice, deletearraycustomerservice
 }
