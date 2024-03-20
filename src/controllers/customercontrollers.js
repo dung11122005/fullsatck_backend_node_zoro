@@ -53,7 +53,16 @@ module.exports = {
         }
     },
     getALLcustomer: async (req, res) => {
-        let result = await getALLcustomerservice();
+        console.log(req.query);
+        let limit = req.query.limit;
+        let page = req.query.page;
+        let result = null;
+        if (limit && page) {
+            result = await getALLcustomerservice(limit, page);
+        } else {
+            result = await getALLcustomerservice();
+        }
+
         return res.status(200).json(
             {
                 EC: 0,
