@@ -6,6 +6,7 @@ const webrouter = require('./routes/web');
 const apirouter = require('./routes/api');
 const fileUpload = require('express-fileupload');
 const connection = require('./config/database')
+const { MongoClient } = require('mongodb');
 // const Kitten = require('./models/kittan');
 // console.log('>>> check env', process.env);
 
@@ -36,7 +37,28 @@ app.use('/v1/api/', apirouter);
 //test connection
 (async () => {
     try {
-        await connection();
+        //using monggoose
+        // await connection();
+
+        //using mongodb driver
+        // Connection URL
+        const url = process.env.DB_HOST_WITH_DRIVER;
+        const client = new MongoClient(url);
+
+        // Database Name
+        const dbName = process.env.DB_NAME;
+
+        await client.connect();
+        console.log('Connected successfully to server');
+
+        const db = client.db(dbName);
+        const collection = db.collection('customers');
+
+
+        // collection.insertOne({ "name": "hoang tan dung" })
+        let a = await collection.findOne({ address: "TPHCM" })
+        console.log(">>> find = ", a)
+        ////
         app.listen(port, hostname, () => {
             console.log(`Example app listening on port ${port}`)
         })
