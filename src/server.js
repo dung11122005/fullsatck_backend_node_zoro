@@ -55,9 +55,21 @@ app.use('/v1/api/', apirouter);
         const collection = db.collection('customers');
 
 
-        // collection.insertOne({ "name": "hoang tan dung" })
-        let a = await collection.findOne({ address: "TPHCM" })
-        console.log(">>> find = ", a)
+        collection.insertOne(
+            {
+                "name": "hoang tan dung",
+                address: {
+                    province: 'hn',
+                    country: {
+                        name: 'vietnam',
+                        code: 100000
+                    }
+                }
+            }
+        )
+
+
+
         ////
         app.listen(port, hostname, () => {
             console.log(`Example app listening on port ${port}`)
